@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="48" fill="#050814" />
+  <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+    <path d="M200 120H1400" />
+    <path d="M200 240H1400" />
+    <path d="M200 360H1400" />
+    <path d="M200 480H1400" />
+    <path d="M200 600H1400" />
+    <path d="M200 720H1400" />
+    <path d="M320 40V840" />
+    <path d="M520 40V840" />
+    <path d="M720 40V840" />
+    <path d="M920 40V840" />
+    <path d="M1120 40V840" />
+    <path d="M1320 40V840" />
+  </g>
+  <circle cx="1120" cy="260" r="120" fill="#6568FF" fill-opacity="0.24" />
+  <circle cx="560" cy="620" r="160" fill="#1FE6B5" fill-opacity="0.22" />
+  <path d="M320 240H960" stroke="#1FE6B5" stroke-width="4" stroke-linecap="round" />
+  <path d="M320 300H1120" stroke="#8C90FF" stroke-width="4" stroke-linecap="round" />
+  <path d="M320 360H980" stroke="#1FE6B5" stroke-width="4" stroke-linecap="round" />
+</svg>

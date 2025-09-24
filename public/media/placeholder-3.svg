@@ -1,0 +1,17 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="#040915" />
+  <g filter="url(#f2)" opacity="0.6">
+    <circle cx="340" cy="360" r="220" fill="#6568FF" />
+    <circle cx="820" cy="500" r="320" fill="#1FE6B5" />
+    <circle cx="1220" cy="360" r="260" fill="#8C90FF" />
+  </g>
+  <rect x="300" y="220" width="1000" height="560" rx="56" stroke="rgba(255,255,255,0.08)" stroke-width="3" />
+  <rect x="360" y="320" width="240" height="100" rx="20" fill="rgba(101,104,255,0.18)" />
+  <rect x="640" y="320" width="500" height="100" rx="20" fill="rgba(31,230,181,0.14)" />
+  <rect x="360" y="460" width="820" height="80" rx="18" fill="rgba(255,255,255,0.05)" />
+  <defs>
+    <filter id="f2" x="0" y="0" width="1600" height="1000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="90" />
+    </filter>
+  </defs>
+</svg>

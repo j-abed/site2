@@ -1,0 +1,68 @@
+@import './reset.css';
+@import '../styles/tailwind.css';
+
+:root {
+  --bg: #050814;
+  --fg: #F5F7FF;
+  --muted: #7B85A4;
+  --brand: #1FE6B5;
+  --brand-strong: #00CDA4;
+  --accent: #6568FF;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(31, 230, 181, 0.15), transparent 45%),
+    radial-gradient(circle at top right, rgba(101, 104, 255, 0.15), transparent 40%), var(--bg);
+  color: var(--fg);
+  @apply font-sans;
+}
+
+/***** Utilities *****/
+.perspective {
+  perspective: 1200px;
+}
+
+.grid-max {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.kbd-focus {
+  @apply rounded-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-mint-400/40;
+}
+
+.card-mask::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 8, 20, 0.6), transparent 45%);
+  pointer-events: none;
+}
+
+/***** Decorative accents *****/
+.glow-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top, rgba(31, 230, 181, 0.16), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-tile:hover::before,
+.glow-tile:focus-visible::before {
+  opacity: 1;
+}
