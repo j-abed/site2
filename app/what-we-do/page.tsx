@@ -7,9 +7,9 @@ export default function WhatWeDoPage() {
     <main className="pt-[92px]">
       <Section>
         <div className="grid-max max-w-4xl" data-animate="rise">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-mint-300">Capabilities</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600 dark:text-mint-300">Capabilities</p>
           <h1 className="mt-4 text-3xl font-bold md:text-5xl">Outcome-focused teams for modern learning products</h1>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-lg text-slate-600 dark:text-white/70">
             We embed alongside founders and operators to define strategy, prototype AI-assisted experiences, validate with real
             learners, and ship production-ready platforms. Every engagement is designed to create momentum you can sustain.
           </p>
@@ -35,10 +35,10 @@ export default function WhatWeDoPage() {
             <article
               key={item.title}
               data-item
-              className="glow-tile relative rounded-2xl border border-night-700/60 bg-night-900/60 p-6 backdrop-blur"
+              className="glow-tile relative rounded-2xl border border-slate-200 bg-white p-6 backdrop-blur dark:border-night-700/60 dark:bg-night-900/60"
             >
-              <h2 className="text-xl font-semibold text-white">{item.title}</h2>
-              <p className="mt-3 text-sm text-white/70">{item.copy}</p>
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{item.title}</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-white/70">{item.copy}</p>
             </article>
           ))}
         </div>

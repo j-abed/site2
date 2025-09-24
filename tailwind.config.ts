@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -40,7 +41,7 @@ const config: Config = {
         '3xl': '1.75rem',
       },
       backgroundImage: {
-        'hero-radial': 'radial-gradient(120% 120% at 15% 20%, rgba(31,230,181,0.35) 0%, rgba(10,20,48,0) 60%)',
+        'hero-radial': 'var(--hero-radial)',
         'panel-sheen': 'linear-gradient(135deg, rgba(101,104,255,0.12), rgba(31,230,181,0.06))',
       },
     },

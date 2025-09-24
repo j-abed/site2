@@ -22,9 +22,9 @@ export default function WhoWeArePage() {
     <main className="pt-[92px]">
       <Section>
         <div className="grid-max max-w-4xl" data-animate="rise">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-mint-300">Team</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600 dark:text-mint-300">Team</p>
           <h1 className="mt-4 text-3xl font-bold md:text-5xl">Operators, designers, and technologists who love hard problems</h1>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-lg text-slate-600 dark:text-white/70">
             Puzzles Consulting is a distributed crew that has launched dozens of education ventures and internal academies. We’re
             hands-on partners who plug into your stack, move fast, and leave your team stronger than we found it.
           </p>
@@ -36,10 +36,10 @@ export default function WhoWeArePage() {
             <article
               key={principle.title}
               data-item
-              className="glow-tile relative rounded-2xl border border-night-700/60 bg-night-900/60 p-6 backdrop-blur"
+              className="glow-tile relative rounded-2xl border border-slate-200 bg-white p-6 backdrop-blur dark:border-night-700/60 dark:bg-night-900/60"
             >
-              <h2 className="text-xl font-semibold text-white">{principle.title}</h2>
-              <p className="mt-3 text-sm text-white/70">{principle.description}</p>
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{principle.title}</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-white/70">{principle.description}</p>
             </article>
           ))}
         </div>

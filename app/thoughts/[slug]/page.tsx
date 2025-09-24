@@ -20,12 +20,15 @@ export default function ThoughtDetailPage({ params }: ThoughtPageProps) {
   return (
     <main className="pt-[92px]">
       <article className="grid-max py-20" data-animate="rise">
-        <Link href="/thoughts" className="text-sm text-white/60 transition hover:text-white">
+        <Link
+          href="/thoughts"
+          className="text-sm text-slate-600 transition hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
+        >
           ← Back to thoughts
         </Link>
         <h1 className="mt-6 text-3xl font-bold md:text-4xl">{post.title}</h1>
-        <p className="mt-2 max-w-2xl text-white/70">{post.excerpt}</p>
-        <div className="mt-8 max-w-3xl space-y-5 text-white/80">
+        <p className="mt-2 max-w-2xl text-slate-600 dark:text-white/70">{post.excerpt}</p>
+        <div className="mt-8 max-w-3xl space-y-5 text-slate-700 dark:text-white/80">
           <p>
             This is a placeholder article. Replace it with your long-form content, research, and frameworks. Consider connecting
             to a CMS or Markdown content pipeline to publish regularly without redeploying the site.

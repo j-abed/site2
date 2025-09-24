@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import type { CaseStudy } from '@/lib/data'
+import { useTheme } from './ThemeProvider'
 
 interface CaseStudyCardProps {
   item: CaseStudy
@@ -12,12 +13,17 @@ interface CaseStudyCardProps {
 
 export default function CaseStudyCard({ item }: CaseStudyCardProps) {
   const ref = useRef<HTMLDivElement | null>(null)
+  const { theme } = useTheme()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useTransform(y, (value) => (value / 40) * -1)
   const rotateY = useTransform(x, (value) => value / 40)
-  const cardBackground =
-    item.background ?? 'linear-gradient(135deg, rgba(12, 20, 32, 0.98) 0%, rgba(12, 17, 28, 0.92) 100%)'
+  const isDark = theme === 'dark'
+  const cardBackground = isDark
+    ? item.background ?? 'linear-gradient(135deg, rgba(12, 20, 32, 0.98) 0%, rgba(12, 17, 28, 0.92) 100%)'
+    : item.lightBackground ?? 'linear-gradient(135deg, rgba(226, 232, 240, 0.92) 0%, rgba(203, 213, 225, 0.88) 100%)'
+  const cardBorder = item.lightBorder ?? 'linear-gradient(135deg, #1d4ed8 0%, #312e81 100%)'
+  const lightInnerRadius = 'calc(1.75rem - 3px)'
 
   function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
     const element = ref.current
@@ -38,20 +44,33 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
     <motion.article
       data-item
       data-sequence-panel
-      style={{ background: cardBackground }}
-      className="relative flex min-h-[420px] flex-col justify-center gap-8 overflow-hidden rounded-3xl border border-white/15 shadow-card-lg backdrop-blur lg:h-full lg:flex-row lg:flex-shrink-0 lg:items-center"
+      style={isDark ? { background: cardBackground } : { background: cardBorder }}
+      className={`relative flex min-h-[420px] flex-col justify-center gap-8 overflow-hidden rounded-3xl shadow-card-lg lg:h-full lg:flex-row lg:flex-shrink-0 lg:items-center ${
+        isDark ? 'border border-white/15 backdrop-blur' : 'border border-transparent p-[3px]'
+      }`}
     >
-      <div className="pointer-events-none absolute inset-0 bg-night-950/18" aria-hidden />
-      <div className="relative z-10 flex w-full flex-col justify-center gap-8 lg:flex-row lg:items-center">
+      {isDark ? <div className="pointer-events-none absolute inset-0 bg-night-950/18" aria-hidden /> : null}
+      <div
+        className={`relative z-10 flex w-full flex-col justify-center gap-8 overflow-hidden lg:flex-row lg:items-center ${
+          isDark ? '' : 'bg-white'
+        }`}
+        style={isDark ? undefined : { borderRadius: lightInnerRadius }}
+      >
         <motion.div
           ref={ref}
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
-          style={{ rotateX, rotateY }}
+          style={
+            isDark
+              ? { rotateX, rotateY }
+              : { rotateX, rotateY, borderRadius: lightInnerRadius }
+          }
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.995 }}
           transition={{ type: 'spring', stiffness: 220, damping: 20 }}
-          className="relative order-2 overflow-hidden rounded-2xl border border-white/15 bg-white/8 shadow-card-lg lg:order-1 lg:w-1/2"
+          className={`relative order-2 overflow-hidden shadow-card-lg lg:order-1 lg:w-1/2 ${
+            isDark ? 'rounded-2xl bg-white/5 backdrop-blur-sm' : 'bg-white'
+          }`}
         >
           <div className="relative aspect-[4/3] w-full">
             <Image src={item.image} alt={item.title} fill className="object-cover" />
@@ -59,9 +78,9 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
           </div>
         </motion.div>
         <div className="order-1 flex-1 space-y-6 px-2 lg:order-2 lg:max-w-md lg:px-0 xl:max-w-lg">
-          <div className="text-xs uppercase tracking-[0.3em] text-mint-300">Case study</div>
-          <h3 className="text-3xl font-semibold text-white md:text-[2.3rem]">{item.title}</h3>
-          <p className="max-w-2xl text-base text-white/70 md:text-lg">{item.summary}</p>
+          <div className="text-xs uppercase tracking-[0.3em] text-blue-600 dark:text-mint-300">Case study</div>
+          <h3 className="text-3xl font-semibold text-slate-900 dark:text-white md:text-[2.3rem]">{item.title}</h3>
+          <p className="max-w-2xl text-base text-slate-600 dark:text-white/70 md:text-lg">{item.summary}</p>
           {item.callouts?.length ? (
             <div className="flex flex-wrap gap-3">
               {item.callouts.map((callout) => (
@@ -78,7 +97,7 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
           <div>
             <Link
               href={`/work/${item.slug}`}
-              className="inline-flex items-center gap-2 text-sm font-medium text-mint-300 transition hover:text-mint-200"
+              className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition hover:text-blue-500 dark:text-mint-300 dark:hover:text-mint-200"
             >
               Read story
               <span aria-hidden>→</span>

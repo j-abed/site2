@@ -5,6 +5,7 @@ import CaseStudyGrid from '@/components/CaseStudyGrid'
 import Testimonials from '@/components/Testimonials'
 import CTASection from '@/components/CTASection'
 import ThoughtsGrid from '@/components/ThoughtsGrid'
+import ProjectsCarousel from '@/components/ProjectsCarousel'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       </div>
       <ThoughtsGrid />
       <Testimonials />
+      <ProjectsCarousel />
       <CTASection />
     </main>
   )

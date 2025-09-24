@@ -7,9 +7,11 @@ const logos = ['logo-1.svg', 'logo-2.svg', 'logo-3.svg', 'logo-4.svg', 'logo-5.s
 
 export default function LogosCarousel() {
   return (
-    <div className="border-y border-white/10 bg-night-900/30 py-10" data-animate="rise">
+    <div className="border-y border-slate-200/70 bg-white/80 py-10 dark:border-white/10 dark:bg-night-900/30" data-animate="rise">
       <div className="grid-max overflow-hidden">
-        <p className="mb-6 text-center text-xs uppercase tracking-[0.4em] text-white/40">Trusted by growth teams</p>
+        <p className="mb-6 text-center text-xs uppercase tracking-[0.4em] text-slate-400 dark:text-white/40">
+          Trusted by growth teams
+        </p>
         <motion.div
           className="flex items-center gap-16"
           animate={{ x: ['0%', '-50%'] }}
