@@ -17,11 +17,11 @@ export default function CaseStudyGrid() {
           <p className="text-xs uppercase tracking-[0.3em] text-white/40">Scroll to explore</p>
         </div>
         <div
-          className="relative overflow-visible rounded-3xl border border-night-700/60 bg-night-900/40 p-6 shadow-card-lg backdrop-blur lg:min-h-screen lg:overflow-hidden lg:pt-8"
+          className="relative overflow-visible rounded-3xl border border-night-700/60 bg-night-900/40 p-6 shadow-card-lg backdrop-blur lg:min-h-[82vh] lg:overflow-hidden lg:pt-8"
           data-sequence
           data-animate="rise"
         >
-          <div className="flex flex-col gap-10 lg:min-h-screen lg:gap-0" data-sequence-track>
+          <div className="flex flex-col gap-10 lg:min-h-[82vh] lg:gap-0" data-sequence-track>
             {caseStudies.map((item) => (
               <CaseStudyCard key={item.id} item={item} />
             ))}

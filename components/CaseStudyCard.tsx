@@ -36,7 +36,7 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
     <motion.article
       data-item
       data-sequence-panel
-      className="flex min-h-[420px] flex-col justify-center gap-10 lg:h-full lg:flex-row lg:flex-shrink-0"
+      className="flex min-h-[420px] flex-col justify-center gap-8 lg:h-full lg:flex-row lg:flex-shrink-0 lg:items-center"
     >
       <motion.div
         ref={ref}

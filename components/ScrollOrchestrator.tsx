@@ -84,9 +84,10 @@ export default function ScrollOrchestrator() {
         const panels = Array.from(sequence.querySelectorAll<HTMLElement>('[data-sequence-panel]'))
         if (!track || panels.length <= 1) return
 
-        const panelHeight = sequence.offsetHeight || window.innerHeight
-          gsap.set(track, { position: 'relative' })
-          panels.forEach((panel, index) => {
+        const panelHeight = panels[0]?.offsetHeight || sequence.offsetHeight || window.innerHeight
+        const segmentHeight = Math.max(1, panelHeight)
+        gsap.set(track, { position: 'relative' })
+        panels.forEach((panel, index) => {
             gsap.set(panel, {
               position: 'absolute',
               inset: 0,
@@ -97,17 +98,17 @@ export default function ScrollOrchestrator() {
             panel.style.pointerEvents = index === 0 ? 'auto' : 'none'
           })
 
-          let currentIndex = 0
+        let currentIndex = 0
 
-          const trigger = ScrollTrigger.create({
-            trigger: sequence,
-            start: 'top top+=120',
-            end: () => `+=${Math.max(1, panels.length - 1) * panelHeight}`,
-            scrub: true,
-            anticipatePin: 1,
-            pin: true,
-            pinSpacing: true,
-            snap: {
+        const trigger = ScrollTrigger.create({
+          trigger: sequence,
+          start: 'top top+=120',
+          end: () => `+=${Math.max(1, panels.length - 1) * segmentHeight}`,
+          scrub: true,
+          anticipatePin: 1,
+          pin: true,
+          pinSpacing: true,
+          snap: {
               snapTo: (value) => {
                 const segments = panels.length - 1
                 if (segments <= 0) return 0
@@ -115,11 +116,11 @@ export default function ScrollOrchestrator() {
               },
               duration: { min: 0.25, max: 0.5 },
               ease: 'power1.out',
-            },
-            onUpdate: (self) => {
-              const scroll = self.scroll() - self.start
-              let targetIndex = Math.round(scroll / panelHeight)
-              targetIndex = Math.max(0, Math.min(panels.length - 1, targetIndex))
+          },
+          onUpdate: (self) => {
+            const scroll = self.scroll() - self.start
+            let targetIndex = Math.round(scroll / segmentHeight)
+            targetIndex = Math.max(0, Math.min(panels.length - 1, targetIndex))
 
               if (targetIndex === currentIndex) return
 
