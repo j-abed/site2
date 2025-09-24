@@ -1,29 +1,27 @@
-import '@testing-library/jest-dom'
-import { vi } from 'vitest'
-import React from 'react'
+import React, { ReactNode } from 'react';
+import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 vi.mock('framer-motion', () => {
   const MockComponent = React.forwardRef<HTMLDivElement, React.PropsWithChildren<Record<string, unknown>>>(
-    ({ children, ...rest }, ref) => (
-      <div ref={ref} {...rest}>
-        {children}
-      </div>
-    ),
-  )
+    ({ children, ...rest }, ref) => React.createElement('div', { ref, ...rest }, children as ReactNode)
+  );
 
   const motionProxy = new Proxy(
     {},
     {
       get: () => MockComponent,
     },
-  )
+  );
 
   return {
     __esModule: true,
     motion: motionProxy,
-    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    AnimatePresence: function AnimatePresence({ children }: { children: ReactNode }) {
+      return React.createElement(React.Fragment, null, children);
+    },
     useScroll: () => ({ scrollY: { on: () => undefined } }),
     useTransform: () => 0,
     useMotionTemplate: () => '',
-  }
-})
+  };
+});
