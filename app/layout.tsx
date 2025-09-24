@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swa
 export const metadata: Metadata = {
   title: 'Puzzles Consulting — Learning Products',
   description: 'Puzzles Consulting helps launch AI-forward education products with speed and measurable outcomes.',
+  icons: {
+    icon: '/media/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

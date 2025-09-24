@@ -17,7 +17,7 @@ export default function CaseStudyGrid() {
           <p className="text-xs uppercase tracking-[0.3em] text-white/40">Scroll to explore</p>
         </div>
         <div
-          className="relative overflow-visible rounded-3xl border border-night-700/60 bg-night-900/40 p-6 shadow-card-lg backdrop-blur lg:min-h-[82vh] lg:overflow-hidden lg:pt-8"
+          className="relative overflow-visible rounded-3xl p-6 lg:min-h-[82vh] lg:overflow-visible lg:pt-16"
           data-sequence
           data-animate="rise"
         >

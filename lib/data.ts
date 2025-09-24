@@ -28,6 +28,7 @@ export interface CaseStudy {
   callouts: CaseStudyCallout[]
   image: string
   slug: string
+  background?: string
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -42,6 +43,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     image: '/media/hero-grid.svg',
     slug: 'adaptive-academy',
+    background: 'linear-gradient(135deg, #11213B 0%, #162C55 65%, #1B365F 100%)',
   },
   {
     id: 'c2',
@@ -54,6 +56,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     image: '/media/pattern-drift.svg',
     slug: 'ai-coaching-copilot',
+    background: 'linear-gradient(135deg, #3A0F11 0%, #4D181B 55%, #611F20 100%)',
   },
   {
     id: 'c3',
@@ -66,6 +69,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     image: '/media/pattern-orbit.svg',
     slug: 'product-launch-lab',
+    background: 'linear-gradient(135deg, #0B2F2A 0%, #0F3C35 55%, #12463E 100%)',
   },
 ]
 
