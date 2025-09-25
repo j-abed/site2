@@ -1,195 +1,204 @@
-"use client";
-import React, { useRef, useState, useEffect } from "react";
-import "./ProjectsCarousel.css";
+"use client"
 
-const projects = [
-	{
-		image: "https://picsum.photos/320/200?t=1",
-		title: "Project Alpha",
-		titleClass: "text-cyan-400",
-		description:
-			"Exploring the neon-drenched landscapes of a digital frontier. AI-driven procedural generation creates infinite cityscapes.",
-		progress: 65,
-		phase: "PHASE II",
-		status: "65% COMPLETE",
-		tech: ["Neural Networks", "Voxel Systems", "Quantum Rendering"],
-	},
-	{
-		image: "https://picsum.photos/320/200?t=2",
-		title: "Neuro-Link UI",
-		titleClass: "text-blue-400",
-		description:
-			"Designing intuitive interfaces for brain-computer interaction. Holographic elements respond to neural patterns.",
-		progress: 42,
-		phase: "PHASE I",
-		status: "42% COMPLETE",
-		tech: ["BCI Framework", "Gesture Recognition", "Thought Mapping"],
-	},
-	{
-		image: "https://picsum.photos/320/200?t=3",
-		title: "Quantum Entanglement",
-		titleClass: "text-purple-400",
-		description:
-			"Visualizing complex quantum states through advanced rendering techniques. Real-time simulation of parallel realities.",
-		progress: 89,
-		phase: "PHASE III",
-		status: "89% COMPLETE",
-		tech: ["Q-Bit Architecture", "Multiverse Modeling", "Probability Fields"],
-	},
-	{
-		image: "https://picsum.photos/320/200?t=4",
-		title: "Project Chimera",
-		titleClass: "text-amber-400",
-		description:
-			"Developing next-gen propulsion systems for deep space exploration. Fusion drive concepts push beyond known physics.",
-		progress: 51,
-		phase: "PHASE II",
-		status: "51% COMPLETE",
-		tech: ["Dark Energy Capture", "Plasma Containment", "Gravitational Lensing"],
-	},
-	{
-		image: "https://picsum.photos/320/200?t=5",
-		title: "Aether Network",
-		titleClass: "text-emerald-400",
-		description:
-			"Building a decentralized data network leveraging quantum blockchain and next-gen P2P technology.",
-		progress: 78,
-		phase: "PHASE III",
-		status: "78% COMPLETE",
-		tech: ["Quantum Encryption", "Self-Healing Nodes", "Data Holograms"],
-	},
-];
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import Section from './Section'
+import './ProjectsCarousel.css'
 
-function getCardClass(idx: number, current: number) {
-	if (idx === current) return "carousel-card is-active";
-	if (idx === current - 1) return "carousel-card is-prev";
-	if (idx === current + 1) return "carousel-card is-next";
-	if (idx < current - 1) return "carousel-card is-far-prev";
-	if (idx > current + 1) return "carousel-card is-far-next";
-	return "carousel-card";
+type Project = {
+  image: string
+  title: string
+  summary: string
+  progress: number
+  phase: string
+  status: string
+  timeline: string
+  tech: string[]
+  accent: string
+}
+
+const projects: Project[] = [
+  {
+    image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
+    title: 'Experience launch lab',
+    summary:
+      'Rapid discovery and prototyping sprints alongside a global L&D team to move three flagship experiences from concept to pilot.',
+    progress: 82,
+    phase: 'In market pilots',
+    status: 'Momentum metrics locked',
+    timeline: 'Target graduation: Q4 FY24',
+    tech: ['Journey mapping', 'AI authoring workflow', 'Pilot instrumentation'],
+    accent: '#1d4ed8',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    title: 'Capability academy backbone',
+    summary:
+      'Blueprinted governance, content strategy, and measurement plans for a multi-market academy rollout inside a regulated org.',
+    progress: 68,
+    phase: 'Enablement build',
+    status: 'Operating model signed off',
+    timeline: 'Pilot launch: September',
+    tech: ['Curriculum design', 'Change management', 'Insights dashboard'],
+    accent: '#0f766e',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80',
+    title: 'AI coaching copilots',
+    summary:
+      'Co-created agent playbooks, guardrails, and release cadence to give talent managers AI assisted coaching inside existing tools.',
+    progress: 56,
+    phase: 'Controlled release',
+    status: 'Governance framework approved',
+    timeline: 'Scaled release: November',
+    tech: ['LLM orchestration', 'Feedback loops', 'Operational playbook'],
+    accent: '#7c3aed',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80',
+    title: 'Partner marketplace',
+    summary:
+      'Designed and shipped a partner-enabled learning marketplace with clear pricing, onboarding, and reporting guardrails.',
+    progress: 44,
+    phase: 'Design foundations',
+    status: 'Opportunity sizing validated',
+    timeline: 'MVP launch: January',
+    tech: ['Service design', 'Marketplace monetisation', 'Operator tooling'],
+    accent: '#b45309',
+  },
+]
+
+function getCardClass(index: number, current: number) {
+  if (index === current) return 'carousel-card is-active'
+  if (index === current - 1) return 'carousel-card is-prev'
+  if (index === current + 1) return 'carousel-card is-next'
+  if (index < current - 1) return 'carousel-card is-far-prev'
+  if (index > current + 1) return 'carousel-card is-far-next'
+  return 'carousel-card'
 }
 
 export default function ProjectsCarousel() {
-	const trackRef = useRef<HTMLDivElement>(null);
-	const containerRef = useRef<HTMLDivElement>(null);
-	const [current, setCurrent] = useState(2); // Centered on 3rd card by default
+  const trackRef = useRef<HTMLDivElement>(null)
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const [current, setCurrent] = useState(0)
 
-	// Center the active card
-	useEffect(() => {
-		if (!trackRef.current || !containerRef.current) return;
-		const card = trackRef.current.children[current] as HTMLElement;
-		if (!card) return;
-		const containerWidth = containerRef.current.offsetWidth;
-		const cardWidth = card.offsetWidth;
-		const cardMargin = 25; // match .carousel-card margin
-		const amountToMove = current * (cardWidth + cardMargin * 2);
-		const containerCenter = containerWidth / 2;
-		const cardCenter = cardWidth / 2;
-		const targetTranslateX = containerCenter - cardCenter - amountToMove;
-		trackRef.current.style.transform = `translateX(${targetTranslateX}px)`;
-	}, [current]);
+  const clampIndex = (value: number) => Math.min(Math.max(value, 0), projects.length - 1)
 
-	// Keyboard navigation
-	useEffect(() => {
-		const handler = (e: KeyboardEvent) => {
-			if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-				setCurrent((c) => Math.min(c + 1, projects.length - 1));
-			} else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-				setCurrent((c) => Math.max(c - 1, 0));
-			}
-		};
-		window.addEventListener("keydown", handler);
-		return () => window.removeEventListener("keydown", handler);
-	}, []);
+  const alignToCurrent = () => {
+    const track = trackRef.current
+    const viewport = viewportRef.current
+    if (!track || !viewport) return
+    const card = track.children[current] as HTMLElement | undefined
+    if (!card) return
 
-	return (
-		<div className="carousel-container" ref={containerRef}>
-			<div className="carousel-track" ref={trackRef}>
-				{projects.map((p, i) => (
-					<div className={getCardClass(i, current)} key={i}>
-						<div className="card-image-container">
-							<img src={p.image} alt={p.title} className="card-image" />
-						</div>
-						<div className="card-content">
-							<h3
-								className={`card-title text-xl font-bold ${p.titleClass}`}
-								data-text={p.title}
-							>
-								{p.title}
-							</h3>
-							<p className="card-description">{p.description}</p>
-							<div className="card-progress">
-								<div
-									className="progress-value"
-									style={{ width: `${p.progress}%` }}
-								></div>
-							</div>
-							<div className="card-stats">
-								<span>{p.phase}</span>
-								<span>{p.status}</span>
-							</div>
-						</div>
-						<div className="tech-details">
-							{p.tech.map((t) => (
-								<div className="tech-tag" key={t}>
-									{t}
-								</div>
-							))}
-						</div>
-					</div>
-				))}
-			</div>
-			<button
-				className="carousel-button prev"
-				onClick={() => setCurrent((c) => Math.max(c - 1, 0))}
-				aria-label="Previous"
-				disabled={current === 0}
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="w-6 h-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15.75 19.5 8.25 12l7.5-7.5"
-					/>
-				</svg>
-			</button>
-			<button
-				className="carousel-button next"
-				onClick={() => setCurrent((c) => Math.min(c + 1, projects.length - 1))}
-				aria-label="Next"
-				disabled={current === projects.length - 1}
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="w-6 h-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="m8.25 4.5 7.5 7.5-7.5 7.5"
-					/>
-				</svg>
-			</button>
-			<div className="carousel-indicators">
-				{projects.map((_, i) => (
-					<div
-						key={i}
-						className={"indicator" + (i === current ? " active" : "")}
-						onClick={() => setCurrent(i)}
-					></div>
-				))}
-			</div>
-		</div>
-	);
+    const viewportWidth = viewport.clientWidth
+    const cardWidth = card.clientWidth
+    const cardOffset = card.offsetLeft
+    const target = cardOffset - (viewportWidth - cardWidth) / 2
+    track.style.transform = `translate3d(${-target}px, 0, 0)`
+  }
+
+  useEffect(() => {
+    alignToCurrent()
+  }, [current])
+
+  useEffect(() => {
+    const handleResize = () => alignToCurrent()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    alignToCurrent()
+  }, [])
+
+  useEffect(() => {
+    const handleKeyboard = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        setCurrent((prev) => clampIndex(prev + 1))
+      }
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        setCurrent((prev) => clampIndex(prev - 1))
+      }
+    }
+    window.addEventListener('keydown', handleKeyboard)
+    return () => window.removeEventListener('keydown', handleKeyboard)
+  }, [])
+
+  return (
+    <Section>
+      <div className="carousel-container">
+        <div className="carousel-shell" aria-live="polite">
+          <button
+            type="button"
+            className="carousel-button prev"
+            onClick={() => setCurrent((prev) => clampIndex(prev - 1))}
+            aria-label="View previous project"
+            disabled={current === 0}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="carousel-button next"
+            onClick={() => setCurrent((prev) => clampIndex(prev + 1))}
+            aria-label="View next project"
+            disabled={current === projects.length - 1}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+          <div className="carousel-viewport" ref={viewportRef}>
+            <div className="carousel-track" ref={trackRef}>
+              {projects.map((project, index) => (
+                <article
+                  key={project.title}
+                  className={getCardClass(index, current)}
+                  style={{ '--accent-color': project.accent } as CSSProperties}
+                  onClick={() => setCurrent(index)}
+                >
+                  <div className="card-media">
+                    <img src={project.image} alt={project.title} loading="lazy" />
+                  </div>
+                  <div className="card-body">
+                    <span className="card-phase">{project.phase}</span>
+                    <h3 className="card-title">{project.title}</h3>
+                    <p className="card-description">{project.summary}</p>
+                    <div className="card-progress">
+                      <span className="value" style={{ width: `${project.progress}%` }} />
+                    </div>
+                    <div className="card-meta">
+                      <span>{project.status}</span>
+                      <span>{project.timeline}</span>
+                    </div>
+                  </div>
+                  <div className="tech-list">
+                    {project.tech.map((item) => (
+                      <span className="tech-pill" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="carousel-indicators">
+          {projects.map((project, index) => (
+            <button
+              key={project.title}
+              type="button"
+              className={`indicator${index === current ? ' active' : ''}`}
+              onClick={() => setCurrent(index)}
+              aria-label={`Jump to ${project.title}`}
+              aria-current={index === current ? 'true' : undefined}
+            />
+          ))}
+        </div>
+      </div>
+    </Section>
+  )
 }

@@ -24,23 +24,23 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <div className="section" data-batch="stagger">
-      <div className="grid-max">
-        <h2 className="mb-8 text-2xl font-bold md:text-3xl">What partners say</h2>
+      <div className="grid-max section-divider pb-10">
+        <h2 className="mb-8 gradient-text text-3xl font-semibold md:text-4xl">What partners say</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
             <blockquote
               key={testimonial.name}
               data-item
-              className="glow-tile relative rounded-2xl border border-slate-200 bg-white p-6 backdrop-blur dark:border-night-700/60 dark:bg-night-900/60"
+              className="glow-tile relative rounded-2xl border border-slate-200/60 bg-white/95 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="flex items-center gap-3">
                 <Image src={testimonial.avatar} alt="" width={48} height={48} className="h-12 w-12 rounded-full" />
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{testimonial.name}</div>
-                  <div className="text-xs uppercase tracking-[0.3em] text-slate-400 dark:text-white/40">{testimonial.role}</div>
+                  <div className="text-sm font-semibold text-slate-900">{testimonial.name}</div>
+                  <div className="text-xs uppercase tracking-[0.3em] text-slate-400">{testimonial.role}</div>
                 </div>
               </div>
-              <p className="mt-5 text-slate-600 dark:text-white/80">“{testimonial.quote}”</p>
+              <p className="mt-5 text-slate-600">“{testimonial.quote}”</p>
             </blockquote>
           ))}
         </div>

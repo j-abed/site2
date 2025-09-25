@@ -42,7 +42,7 @@ const config: Config = {
       },
       backgroundImage: {
         'hero-radial': 'var(--hero-radial)',
-        'panel-sheen': 'linear-gradient(135deg, rgba(101,104,255,0.12), rgba(31,230,181,0.06))',
+        'panel-sheen': 'linear-gradient(145deg, rgba(29,78,216,0.12), rgba(15,23,42,0.04))',
       },
     },
   },
