@@ -1,14 +1,15 @@
+
 .carousel-container {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem 3rem;
+  padding: 0 1.5rem 3.5rem;
 }
 
 .carousel-shell {
   position: relative;
   margin: 0 auto;
-  max-width: 1120px;
+  max-width: 1200px;
   border-radius: 32px;
   padding: 3.5rem 0 4.5rem;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(232, 238, 250, 0.82));
@@ -41,7 +42,7 @@
 
 .carousel-card {
   position: relative;
-  flex: 0 0 clamp(260px, 65vw, 320px);
+  flex: 0 0 clamp(280px, 60vw, 340px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -100,8 +101,8 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  padding: 1.5rem 1.5rem 1.25rem;
+  gap: 1rem;
+  padding: 1.75rem 1.75rem 1.4rem;
 }
 
 .card-phase {
@@ -113,17 +114,24 @@
   opacity: 0.66;
 }
 
+
 .card-title {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--accent-color, #102a43);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
+.card-title + .card-description {
+  margin-top: 0.65rem;
+}
+
+
 .card-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.94rem;
+  line-height: 1.65;
   color: rgba(37, 52, 75, 0.78);
+  margin: 0;
 }
 
 .card-progress {
@@ -142,13 +150,16 @@
   transition: width 0.45s cubic-bezier(.77,0,.18,1);
 }
 
+
 .card-meta {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: rgba(26, 63, 175, 0.7);
+  margin-top: 0.25rem;
 }
 
 .tech-list {

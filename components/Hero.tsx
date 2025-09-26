@@ -58,7 +58,7 @@ export default function Hero() {
               animate="animate"
               className="gradient-text relative mt-6 text-4xl font-semibold leading-tight md:text-6xl"
             >
-               Improve Your Business Piece by Piece
+              Build Intelligent Operations Piece by Piece
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -66,9 +66,8 @@ export default function Hero() {
               animate="animate"
               className="relative mx-auto mt-6 max-w-2xl text-base text-slate-600 md:text-lg"
             >
-            We’re a hybrid team of strategists, technologists, and management professionals taking AI-enabled business experiences from
-            concept to reality.
-            
+              We partner with executive teams to translate AI ambition into operating models, growth plays, and platforms that
+              move the metrics that matter—without losing sight of the humans who run them.
             </motion.p>
             <motion.div
               variants={fadeUp}

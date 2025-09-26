@@ -23,9 +23,10 @@ export default function ContactPage() {
       <Section>
         <div className="grid-max max-w-4xl" data-animate="rise">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Contact</p>
-          <h1 className="mt-4 text-3xl font-bold md:text-5xl">Let’s build something together</h1>
+          <h1 className="mt-4 text-3xl font-bold md:text-5xl">Bring us into the next decision cycle</h1>
           <p className="mt-4 text-lg text-slate-600">
-            Tell us about your learning challenge, team, and timeline. We’ll reply within two business days.
+            Share the business problem, executives involved, and the timeframe you’re working against. We’ll reply within two
+            business days with next steps.
           </p>
         </div>
       </Section>
@@ -80,7 +81,7 @@ export default function ContactPage() {
                 name="message"
                 required
                 rows={5}
-                placeholder="We’re launching a new capability academy..."
+                placeholder="We’re redesigning our service organization around AI-enabled workflows..."
                 className="kbd-focus mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400"
               />
             </div>

@@ -8,10 +8,10 @@ export default function ThoughtsPage() {
       <Section>
         <div className="grid-max max-w-4xl" data-animate="rise">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Ideas</p>
-          <h1 className="mt-4 text-3xl font-bold md:text-5xl">Notes from the Puzzles lab</h1>
+          <h1 className="mt-4 text-3xl font-bold md:text-5xl">Field notes on intelligent operating models</h1>
           <p className="mt-4 text-lg text-slate-600">
-            Essays, frameworks, and experiments exploring how AI unlocks more personalized, outcomes-driven learning at scale.
-            Subscribe to stay close to what we’re testing.
+            Frameworks, playbooks, and executive primers for leaders modernising their organisations with AI and automation. We
+            share what works once it has shipped real outcomes—not just lab demos.
           </p>
         </div>
       </Section>

@@ -6,10 +6,10 @@ export default function ServiceTiles() {
     <Section>
       <div className="grid-max section-divider pb-10" data-batch="stagger">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="gradient-text text-3xl font-semibold md:text-4xl">Where we make expert solves</h2>
+          <h2 className="gradient-text text-3xl font-semibold md:text-4xl">Where executive teams pull us in</h2>
           <p className="max-w-md text-sm text-slate-600">
-            Plug our team anywhere across the product lifecycle. We break inertia with modular engagements that deliver proof,
-            not just plans.
+            Drop our consultants into strategy rooms, pilot pods, or business application implementations. We pressure-test ambition, prove the value,
+            and leave behind the expertise to scale it.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">

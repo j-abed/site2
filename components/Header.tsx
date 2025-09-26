@@ -44,7 +44,7 @@ export default function Header() {
           <div className="flex flex-col leading-none">
             <span className="text-base font-semibold">Puzzles Consulting</span>
             <span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-slate-500">
-              Learning Products
+              Solving business problems
             </span>
           </div>
         </Link>
@@ -73,7 +73,7 @@ export default function Header() {
             href="/contact"
             className="ml-3 inline-flex items-center gap-2 rounded-full border border-blue-500/40 px-4 py-2 text-sm font-semibold text-blue-600 transition hover:bg-blue-500/10 hover:text-blue-700"
           >
-            Start a project
+            Work with us
           </Link>
         </nav>
         <button

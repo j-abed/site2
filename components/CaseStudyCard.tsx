@@ -8,9 +8,13 @@ import type { CaseStudy } from '@/lib/data'
 
 interface CaseStudyCardProps {
   item: CaseStudy
+  className?: string
+  style?: CSSProperties
+  imageOpacity?: number
+  isActive?: boolean
 }
 
-export default function CaseStudyCard({ item }: CaseStudyCardProps) {
+export default function CaseStudyCard({ item, className = '', style, imageOpacity = 1, isActive = false }: CaseStudyCardProps) {
   const ref = useRef<HTMLDivElement | null>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -18,18 +22,20 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
   const rotateY = useTransform(x, (value) => value / 40)
   const accent = item.accent ?? '#1d4ed8'
 
-  const cardBackground = item.lightBackground ?? `linear-gradient(135deg, ${withOpacity(accent, 0.16)}, rgba(255,255,255,0.95))`
-  const outlineColor = withOpacity(accent, 0.28)
+  const cardBackground =
+    item.lightBackground ?? `linear-gradient(145deg, rgba(255,255,255,0.98), ${withOpacity(accent, 0.12)})`
+  const outlineColor = withOpacity(accent, 0.18)
   const lightInnerRadius = 'calc(1.75rem - 3px)'
   const calloutTint = withOpacity(accent, 0.18)
   const haloTint = withOpacity(accent, 0.2)
 
-  const cardStyle: CSSProperties = { background: cardBackground }
-  if (item.lightBorder) {
-    cardStyle.borderImage = `${item.lightBorder} 1`
-    cardStyle.borderImageSlice = 1
-  } else {
-    cardStyle.borderColor = outlineColor
+  const borderTint = item.lightBorder ? withOpacity(accent, 0.32) : outlineColor
+  const innerBackground = `linear-gradient(160deg, rgba(255,255,255,0.99), ${withOpacity(accent, 0.06)})`
+
+  const cardStyle: CSSProperties = {
+    background: cardBackground,
+    borderColor: borderTint,
+    ...style,
   }
 
   function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
@@ -55,12 +61,16 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
     return () => cancelAnimationFrame(id)
   }, [x, y])
 
+  const imageFade = Math.min(1, Math.max(0.2, imageOpacity))
+
   return (
     <motion.article
       data-item
       data-sequence-panel
+      data-active={isActive ? 'true' : 'false'}
       style={cardStyle}
-      className="relative flex min-h-[400px] flex-col justify-center overflow-hidden rounded-[28px] border shadow-[0_24px_70px_rgba(15,31,51,0.12)] backdrop-blur lg:h-full lg:flex-row lg:flex-shrink-0 lg:items-center"
+      aria-hidden={!isActive}
+      className={`relative flex w-full min-h-[400px] flex-col justify-center overflow-hidden rounded-[28px] border shadow-[0_20px_40px_rgba(15,31,51,0.12)] lg:h-full lg:flex-row lg:flex-shrink-0 lg:items-center ${className}`.trim()}
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.45]"
@@ -68,8 +78,8 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
         aria-hidden
       />
       <div
-        className="relative z-10 flex w-full flex-col justify-center gap-8 overflow-hidden bg-white/96 lg:flex-row lg:items-center"
-        style={{ borderRadius: lightInnerRadius }}
+        className="relative z-10 flex w-full flex-col justify-center gap-8 overflow-hidden lg:flex-row lg:items-center"
+        style={{ borderRadius: lightInnerRadius, background: innerBackground, boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.66)' }}
       >
         <motion.div
           ref={ref}
@@ -82,7 +92,7 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
           className="relative order-2 overflow-hidden rounded-2xl bg-white shadow-[0_18px_36px_rgba(15,31,51,0.16)] lg:order-1 lg:w-[44%]"
         >
           <div className="relative aspect-[4/3] w-full">
-            <Image src={item.image} alt={item.title} fill className="object-cover" />
+            <Image src={item.image} alt={item.title} fill className="object-cover" style={{ opacity: imageFade }} />
             <div className="card-mask" />
           </div>
         </motion.div>
@@ -137,6 +147,8 @@ export default function CaseStudyCard({ item }: CaseStudyCardProps) {
             </div>
             <Link
               href={`/work/${item.slug}`}
+              tabIndex={isActive ? 0 : -1}
+              aria-hidden={!isActive}
               className="inline-flex items-center gap-2 rounded-full border border-slate-400/30 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400/60 hover:text-blue-700"
             >
               Read story

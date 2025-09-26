@@ -422,3 +422,119 @@ a {
     transform: translate3d(-3px, 4px, 0) rotate3d(0, 0, 1, -0.4deg);
   }
 }
+.case-stack {
+  position: relative;
+  padding: 2rem 0;
+  margin: 0;
+  height: auto;
+  display: block;
+}
+
+.case-study-section {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.case-stack-background {
+  display: none;
+}
+
+.case-stack-track {
+  position: relative;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.case-stack-list {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80rem; /* Back to grid-max standard */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  list-style: none;
+  display: block;
+  height: auto;
+}
+
+@media (min-width: 640px) {
+  .case-stack-list {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-stack-list {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.case-stack-item {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto; /* Back to auto centering */
+  transform: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.case-stack[data-reduced='true'] .case-stack-background {
+  display: none;
+}
+
+.case-stack[data-reduced='true'] .case-stack-track {
+  height: auto !important;
+}
+
+.case-stack[data-reduced='true'] .case-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.case-stack[data-reduced='true'] .case-stack-item {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none !important;
+  opacity: 1;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  will-change: auto;
+}
+
+@media (max-width: 1023px) {
+  .case-stack-background {
+    display: none;
+  }
+
+  .case-stack-track {
+    height: auto !important;
+  }
+
+  .case-stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+  }
+
+  .case-stack-item {
+    position: relative;
+    left: 0;
+    transform: none !important;
+    opacity: 1;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    will-change: auto;
+  }
+}

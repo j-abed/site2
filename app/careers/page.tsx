@@ -3,19 +3,19 @@ import CTASection from '@/components/CTASection'
 
 const openings = [
   {
-    title: 'Learning Experience Designer',
+    title: 'Engagement Lead — AI Transformation',
     type: 'Contract',
-    description: 'Design experiments, produce content prototypes, and orchestrate learner feedback loops.',
+    description: 'Guide executive stakeholders, frame business cases, and orchestrate multi-workstream delivery with calm precision.',
   },
   {
-    title: 'Data Scientist — Learning Analytics',
+    title: 'Lead Strategist — Intelligent Operations',
     type: 'Fractional',
-    description: 'Instrument pilots, interpret product signals, and operationalize outcome dashboards.',
+    description: 'Map opportunity areas, design operating models, and turn ambiguous mandates into clear executive decisions.',
   },
   {
-    title: 'AI Engineer — Enablement',
+    title: 'AI Systems Architect',
     type: 'Project',
-    description: 'Integrate LLM-driven authoring and support tools into existing education platforms.',
+    description: 'Prototype human-in-the-loop automation, stitch data foundations together, and mentor client teams through the build.',
   },
 ]
 
@@ -26,11 +26,11 @@ export default function CareersPage() {
         <div className="grid-max max-w-4xl" data-animate="rise">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600">Talent bench</p>
           <h1 className="gradient-text mt-4 text-3xl font-semibold leading-tight md:text-5xl">
-            Help us build the future of learning
+            Join a bench that ships real transformation
           </h1>
           <p className="mt-4 text-lg text-slate-600">
-            We work with a distributed community of specialists who love moving fast with ambitious education teams. Share
-            your craft and availability — we’ll reach out when the right challenge lands.
+            We collaborate with a distributed network of operators, strategists, and technologists who thrive on untangling
+            executive problems. Tell us what you do best and when you’re available—we’ll reach out when the challenge fits.
           </p>
         </div>
       </Section>

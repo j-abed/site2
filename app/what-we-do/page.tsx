@@ -9,11 +9,11 @@ export default function WhatWeDoPage() {
         <div className="grid-max max-w-4xl" data-animate="rise">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600">Capabilities</p>
           <h1 className="gradient-text mt-4 text-3xl font-semibold leading-tight md:text-5xl">
-            Outcome-focused teams for modern learning products
+            AI-native operating models for modern enterprises
           </h1>
           <p className="mt-4 text-lg text-slate-600">
-            We embed alongside founders and operators to define strategy, prototype AI-assisted experiences, validate with real
-            learners, and ship production-ready platforms. Every engagement is designed to create momentum you can sustain.
+            We work shoulder-to-shoulder with executives to turn AI and automation mandates into credible strategies, live pilots,
+            and rhythms that keep value shipping long after the slideware fades.
           </p>
         </div>
       </Section>
@@ -22,16 +22,16 @@ export default function WhatWeDoPage() {
         <div className="grid-max grid gap-6 md:grid-cols-3" data-batch="stagger">
           {[
             {
-              title: 'Strategy sprints',
-              copy: 'Go from vague direction to prioritized roadmap, messaging, and learner value proposition in under four weeks.',
+              title: 'Executive alignment',
+              copy: 'Facilitate decision forums that link ambition, economics, and risk in a language the C-suite trusts.',
             },
             {
-              title: 'Experience labs',
-              copy: 'Rapidly prototype, test, and iterate on AI-assisted learning journeys before investing in full build-outs.',
+              title: 'Pilot studios',
+              copy: 'Spin up cross-functional pods that prototype human-in-the-loop workflows and validate business signals quickly.',
             },
             {
-              title: 'Launch operations',
-              copy: 'Design launch playbooks, instrumentation, and success metrics so teams can scale pilots with confidence.',
+              title: 'Change enablement',
+              copy: 'Equip leaders and operators with playbooks, rituals, and metrics so the new way of working actually sticks.',
             },
           ].map((item) => (
             <article

@@ -4,16 +4,16 @@ import CTASection from '@/components/CTASection'
 
 const principles = [
   {
-    title: 'Think in systems',
-    description: 'Connect learner, operator, and business outcomes so every experiment compounds.',
+    title: 'Think in flywheels',
+    description: 'Design work so data, automation, and people reinforce each other. That’s how transformation compounds.',
   },
   {
-    title: 'Prototype obsessively',
-    description: 'Ship interactive artefacts early to gather directional signals and de-risk investment.',
+    title: 'Ship signal quickly',
+    description: 'We co-create prototypes and dashboards in weeks so leadership can feel the value—not just hear about it.',
   },
   {
-    title: 'Build transparently',
-    description: 'Operate as embedded partners while transferring playbooks, tooling, and rituals to your team.',
+    title: 'Transfer the playbook',
+    description: 'Every engagement ends with your teams owning the rituals, tooling, and stories that keep momentum going.',
   },
 ]
 
@@ -24,11 +24,12 @@ export default function WhoWeArePage() {
         <div className="grid-max max-w-4xl" data-animate="rise">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600">Team</p>
           <h1 className="gradient-text mt-4 text-3xl font-semibold leading-tight md:text-5xl">
-            Operators, designers, and technologists who love hard problems
+            Consultants, architects, and analysts who turn AI ambition into traction
           </h1>
           <p className="mt-4 text-lg text-slate-600">
-            Puzzles Consulting is a distributed crew that has launched dozens of education ventures and internal academies. We’re
-            hands-on partners who plug into your stack, move fast, and leave your team stronger than we found it.
+            Puzzles is a distributed consultancy of former executives, product leaders, and tech specialists who have scaled
+            intelligent platforms inside Fortune 100s and venture-backed scale-ups. We embed deeply, remove blockers fast, and
+            build capability as we go.
           </p>
         </div>
       </Section>
