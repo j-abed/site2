@@ -46,7 +46,7 @@ export default function CareersPage() {
               <h2 className="mt-3 text-xl font-semibold text-slate-900">{opening.title}</h2>
               <p className="mt-2 flex-1 text-sm text-slate-600">{opening.description}</p>
               <a
-                href="mailto:talent@velocity.studio"
+                href="mailto:talent@puzzlesconsulting.io"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition hover:text-blue-500"
               >
                 Express interest

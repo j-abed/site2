@@ -1,37 +1,22 @@
 "use client"
 
-import { useMemo, useRef } from 'react'
-import type { CSSProperties } from 'react'
+import { motion } from 'framer-motion'
 import Section from './Section'
 import CaseStudyCard from './CaseStudyCard'
 import { caseStudies } from '@/lib/data'
-import { useCaseStack } from './useCaseStack'
-
-const FALLBACK_STYLE = {
-  y: 0,
-  scale: 1,
-  imgOpacity: 1,
-  cardOpacity: 1,
-  visibility: 'visible' as const,
-  pointerEvents: 'auto' as const,
-  z: 100,
-}
 
 export default function CaseStudyGrid() {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const cardRefs = useRef<(HTMLLIElement | null)[]>([])
-  
-  // Disable stack animation for now
-  const styles = caseStudies.map(() => FALLBACK_STYLE)
-  const active = 0
-  const reduced = false
-  const stackHeight = 0
-
   return (
     <div className="relative case-study-section">
       <Section>
         <div className="grid-max relative">
-          <div className="section-divider pb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <motion.div 
+            className="section-divider pb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+            viewport={{ once: true }}
+          >
             <div>
               <h2 className="gradient-text text-3xl font-semibold md:text-4xl">Recent launches</h2>
               <p className="mt-3 max-w-2xl text-sm text-slate-600 md:text-base">
@@ -40,30 +25,32 @@ export default function CaseStudyGrid() {
               </p>
             </div>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Scroll to explore</p>
-          </div>
+          </motion.div>
           
-          {/* Single centered card */}
-          <div className="mt-8">
-            {caseStudies.map((item, index) => {
-              // Show only the first card
-              if (index !== 0) return null
-              
-              return (
-                <div
-                  key={item.id}
-                  ref={(node) => {
-                    cardRefs.current[index] = node as any
-                  }}
-                  style={{
-                    width: '100%',
-                    maxWidth: '1200px',
-                    margin: '0 auto',
-                    borderRadius: '1rem',
-                    overflow: 'hidden',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
-                    backgroundColor: 'white'
-                  }}
-                >
+          {/* Simple animated grid */}
+          <div className="max-w-5xl mx-auto mt-16 space-y-8">
+            {caseStudies.map((item, i) => (
+              <motion.div
+                key={item.id}
+                initial={{ 
+                  opacity: 0, 
+                  y: 80,
+                  scale: 0.95
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  scale: 1
+                }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: i * 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative"
+              >
+                <div className="rounded-2xl overflow-hidden shadow-2xl bg-white hover:shadow-3xl transition-shadow duration-300">
                   <CaseStudyCard
                     item={item}
                     className=""
@@ -71,8 +58,8 @@ export default function CaseStudyGrid() {
                     isActive={true}
                   />
                 </div>
-              )
-            })}
+              </motion.div>
+            ))}
           </div>
         </div>
       </Section>

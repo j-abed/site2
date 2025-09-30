@@ -27,16 +27,23 @@ export default function ThoughtDetailPage({ params }: ThoughtPageProps) {
         <p className="mt-2 max-w-2xl text-slate-600">{post.excerpt}</p>
         <div className="mt-8 max-w-3xl space-y-5 text-slate-700">
           <p>
-            This is a placeholder article. Replace it with your long-form content, research, and frameworks. Consider connecting
-            to a CMS or Markdown content pipeline to publish regularly without redeploying the site.
+            This article explores the frameworks, methodologies, and real-world lessons we've gathered from helping executive 
+            teams navigate AI transformation. Each piece draws from our direct experience with Fortune 100s and growth-stage 
+            companies building intelligent operations.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in felis eget neque aliquet aliquet id eu erat.
-            Sed volutpat sem quis elit cursus, vitae egestas dolor facilisis. Mauris cursus eget velit quis ullamcorper.
+            Our approach combines strategic thinking with tactical execution—helping leadership teams move from AI ambition 
+            to measurable business outcomes. We focus on the intersection of technology capability, organizational readiness, 
+            and market opportunity.
           </p>
           <p>
-            Aliquam accumsan nunc non risus congue, vel vulputate est dictum. Nullam lobortis luctus velit, eget molestie lacus
-            varius vitae. Suspendisse potenti. In hac habitasse platea dictumst.
+            The insights shared here are designed for executives, product leaders, and transformation teams who need to make 
+            AI investments that actually move the needle on revenue, efficiency, and competitive advantage. No theoretical 
+            frameworks—just proven playbooks from the field.
+          </p>
+          <p>
+            Want to dive deeper into any of these topics? We're always interested in discussing specific challenges with 
+            leadership teams who are serious about operationalizing AI at scale.
           </p>
         </div>
       </article>

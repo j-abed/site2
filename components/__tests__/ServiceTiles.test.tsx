@@ -1,11 +1,14 @@
+import React from 'react'
 import { render, screen } from '@testing-library/react'
-import ServiceTiles from '@/components/ServiceTiles'
-import { services } from '@/lib/data'
+import '@testing-library/jest-dom'
+import { describe, it, expect } from 'vitest'
+import ServiceTiles from '../ServiceTiles'
+import { services } from '../../lib/data'
 
 describe('ServiceTiles', () => {
   it('renders the section heading', () => {
     render(<ServiceTiles />)
-    expect(screen.getByRole('heading', { name: /where we create velocity/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /where executive teams pull us in/i })).toBeInTheDocument()
   })
 
   it('renders a tile for each configured service', () => {

@@ -26,7 +26,7 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Disable smooth scroll to let GSAP control it */
 }
 
 body {

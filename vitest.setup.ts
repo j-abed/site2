@@ -2,6 +2,9 @@ import React, { ReactNode } from 'react';
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
+// Make React available globally for components that don't explicitly import it
+globalThis.React = React;
+
 vi.mock('framer-motion', () => {
   const MockComponent = React.forwardRef<HTMLDivElement, React.PropsWithChildren<Record<string, unknown>>>(
     ({ children, ...rest }, ref) => React.createElement('div', { ref, ...rest }, children as ReactNode)

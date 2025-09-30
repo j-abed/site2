@@ -53,14 +53,19 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
         </dl>
         <div className="mt-10 max-w-3xl space-y-5 text-slate-700">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus eros aliquet convallis ultricies. Mauris
-            augue massa, ultricies non ligula. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus
-            ipsum ante quis turpis.
+            Every engagement begins with understanding the specific business problem and the stakeholders who need to see progress. 
+            Our discovery process maps the current state, identifies quick wins, and designs a pilot that demonstrates measurable 
+            value within the first 90 days.
           </p>
           <p>
-            Nulla facilisi. Curabitur vel sem sit amet dolor ultricies varius. Donec tincidunt lacus in velit porttitor, vel
-            blandit neque venenatis. Integer gravida vel tortor ac posuere. Proin id justo eu nisi dictum lobortis vel eu
-            turpis.
+            We work embedded with your teams to build not just the solution, but the organizational capability to sustain and 
+            scale it. This includes governance frameworks, change management protocols, and measurement systems that tie directly 
+            to business outcomes that matter to your leadership team.
+          </p>
+          <p>
+            The result is more than just a successful project—it's a playbook your organization can replicate, a team that 
+            understands how to balance automation with human oversight, and the confidence to tackle increasingly complex 
+            AI transformation challenges.
           </p>
         </div>
       </div>
